@@ -1,0 +1,9 @@
+
+bin/Debug/logFile.txt
+bin/Debug/logFile2.log
+bin/Debug/Logger.log
+*.exe
+*.pdb
+*.cache
+obj/Debug/Logger.csproj.FileListAbsolute.txt
+*.resources
