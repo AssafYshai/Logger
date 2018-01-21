@@ -37,6 +37,8 @@
             this.btnGo = new System.Windows.Forms.Button();
             this.txtLogFilePath = new System.Windows.Forms.TextBox();
             this.comboEventType = new System.Windows.Forms.ComboBox();
+            this.rbCSV = new System.Windows.Forms.RadioButton();
+            this.txtCSVPath = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtLogMessage
@@ -59,7 +61,7 @@
             // rbDB
             // 
             this.rbDB.AutoSize = true;
-            this.rbDB.Location = new System.Drawing.Point(32, 145);
+            this.rbDB.Location = new System.Drawing.Point(32, 168);
             this.rbDB.Name = "rbDB";
             this.rbDB.Size = new System.Drawing.Size(71, 17);
             this.rbDB.TabIndex = 2;
@@ -90,7 +92,7 @@
             // 
             // txtComments
             // 
-            this.txtComments.Location = new System.Drawing.Point(32, 181);
+            this.txtComments.Location = new System.Drawing.Point(32, 206);
             this.txtComments.Multiline = true;
             this.txtComments.Name = "txtComments";
             this.txtComments.Size = new System.Drawing.Size(471, 113);
@@ -98,7 +100,7 @@
             // 
             // btnGo
             // 
-            this.btnGo.Location = new System.Drawing.Point(428, 152);
+            this.btnGo.Location = new System.Drawing.Point(428, 177);
             this.btnGo.Name = "btnGo";
             this.btnGo.Size = new System.Drawing.Size(75, 23);
             this.btnGo.TabIndex = 6;
@@ -127,11 +129,30 @@
             this.comboEventType.Text = "Choose Event Type...";
             this.comboEventType.SelectedIndexChanged += new System.EventHandler(this.comboEventType_SelectedIndexChanged);
             // 
+            // rbCSV
+            // 
+            this.rbCSV.AutoSize = true;
+            this.rbCSV.Location = new System.Drawing.Point(32, 145);
+            this.rbCSV.Name = "rbCSV";
+            this.rbCSV.Size = new System.Drawing.Size(62, 17);
+            this.rbCSV.TabIndex = 9;
+            this.rbCSV.Text = "CSV file";
+            this.rbCSV.UseVisualStyleBackColor = true;
+            // 
+            // txtCSVPath
+            // 
+            this.txtCSVPath.Location = new System.Drawing.Point(105, 144);
+            this.txtCSVPath.Name = "txtCSVPath";
+            this.txtCSVPath.Size = new System.Drawing.Size(398, 20);
+            this.txtCSVPath.TabIndex = 10;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 313);
+            this.ClientSize = new System.Drawing.Size(554, 349);
+            this.Controls.Add(this.txtCSVPath);
+            this.Controls.Add(this.rbCSV);
             this.Controls.Add(this.comboEventType);
             this.Controls.Add(this.txtLogFilePath);
             this.Controls.Add(this.btnGo);
@@ -159,6 +180,8 @@
         private System.Windows.Forms.Button btnGo;
         private System.Windows.Forms.TextBox txtLogFilePath;
         private System.Windows.Forms.ComboBox comboEventType;
+        private System.Windows.Forms.RadioButton rbCSV;
+        private System.Windows.Forms.TextBox txtCSVPath;
     }
 }
 

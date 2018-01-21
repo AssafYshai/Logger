@@ -14,13 +14,15 @@ namespace Logger
     {
         FILE,
         SYSTEM,
-        DB
+        DB,
+        CSV
     }
     class Logger
     {
         
 
         string logFilePath;
+        string logCSVPath;
         string logDbConStr;
         string logSource;
         LOGTYPE log;
@@ -51,6 +53,14 @@ namespace Logger
                     logDbConStr = sLogSource;
                     log = logtype;
                     break;
+                case LOGTYPE.CSV:
+                    logFilePath = sLogSource;
+                    if(logFilePath.Trim().Length == 0)
+                    {
+                        logFilePath = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + ".csv";
+                    }
+                    log = logtype;
+                    break;
             }
         }
 
@@ -71,6 +81,9 @@ namespace Logger
                     break;
                 case LOGTYPE.DB:
                     writeToDB(sMsg, evntType);
+                    break;
+                case LOGTYPE.CSV:
+                    writeToCSV(sMsg, evntType);
                     break;
             }
             
@@ -101,7 +114,33 @@ namespace Logger
         }
 
 
+        private void writeToCSV(string sMsg, string eventType)
+        {
+
+            bool isNewFile = true;
+
+            using (var file = File.Open(logFilePath, FileMode.OpenOrCreate))
+            {
+                if (file.Seek(0, SeekOrigin.End) > 0)
+                {
+                    isNewFile = false;
+                }
+                string strDate = DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss");
+                using (var stream = new StreamWriter(file))
+                {
+                    if (isNewFile)
+                    {
+                        stream.WriteLine("File created, " + strDate);
+                    }
+                    stream.WriteLine(strDate + "," + eventType + "," + sMsg);
+                    stream.Close();
+                }
+            }
+        }
+
+
         
+
         private void writeToEventLog(string sMsg, string eventType)
         {
             string appName = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;

@@ -54,6 +54,13 @@ namespace Logger
                 logger.write(txtLogMessage.Text, eventType);
             }
 
+            if(rbCSV.Checked)
+            {
+                txtComments.AppendText("Sent to logger - log type: CSV.   message: " + txtLogMessage.Text + ".    Event type: " + eventType + "\n");
+                logger = new Logger(txtLogFilePath.Text, LOGTYPE.CSV);
+                logger.write(txtLogMessage.Text, eventType);
+            }
+
         }
 
         
